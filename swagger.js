@@ -209,13 +209,7 @@ exports.options = {
         }
     }
 }
-    ,
-
-
-
-
-
-
+},
     "/api/products":{
         "get":{
             "tags":["Products"],
@@ -312,5 +306,4 @@ exports.options = {
         }
     }
 }
-    }
-    }
+}
