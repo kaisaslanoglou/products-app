@@ -22,8 +22,10 @@ exports.findOne = async(req, res) => {
     try{
     const result = await User.findOne({username: username})
     res.status(200).json({data: result})
+    logger.info(`Success in reading user, ${username}`)
     } catch(err) {
     console.log(`Problem in reading user, ${err}`)
+    logger.error(`Problem in reading user, ${username}`)
     }
 }
 
@@ -47,9 +49,11 @@ exports.create = async(req, res) => {
         const result = await newUser.save()
         res.status(200).json({data: result})
         console.log("User saved")
+        logger.info(`Success in saving user`)
     } catch(err) {
         res.status(400).json({data: err})
         console.log("Problem in saving user")
+        logger.error(`Problem in saving user`)
     }
 }
 
@@ -73,9 +77,11 @@ exports.update = async(req, res) => {
     )
     res.status(200).json({data: result})
     console.log("Successs in updating user ", username)
+    logger.info(`Success in updating user, ${username}`)
 } catch(err) {
     res.status(400).json({data: err})
     console.log("Problem in updating user ", username)
+    logger.error(`Problem in updating user, ${username}`)
 }
 }
    
@@ -90,8 +96,10 @@ exports.delete = async(req, res) => {
         })
         res.status(200).json({data: result})
         console.log("Success in deleting user ", username)
+        logger.info(`Success in deleting user, ${username}`)
     } catch(err) {
-        res.json({data: err})
+        res.status(400).json({data: err})
         console.log("Problem in deleting user ", username)
+        logger.error(`Problem in deleting user`)
     }
 }
