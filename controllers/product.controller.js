@@ -54,6 +54,7 @@ exports.update = async(req, res) => {
     const updateProduct = {
         product: req.body.product,
         cost: req.body.cost,
+        description: req.body.description,
         quantity: req.body.quantity
     }
 

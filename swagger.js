@@ -229,8 +229,34 @@ exports.options = {
                     }
                 }
             }
+        },
+        "post":{
+            "tags":["Products"],
+            "description":"Create new product",
+            "requestBody":{
+                "description":"Product schema to insert",
+                "content":{
+                "application/json":{
+                    "schema":{
+                        "type":"object",
+                        "properties":{
+                            "product": {"type":"string"},
+                            "cost": {"type":"number"},
+                            "description": {"type":"string"},
+                            "quantity": {"type":"number"}
+                        }
+                    }
+                }
+            },
+            "required":["product", "cost"]
+        },
+        "responses":{
+            "200":{
+                "description":"New Product inserted"
+            }
         }
-    },
+    }
+},
     "/api/products/{id}":{
         "get":{
             "tags":["Products"],
@@ -246,10 +272,66 @@ exports.options = {
             "description":"Get Product with specific id",
             "responses":{
                 "200":{
-                    "descrption":"Product to find",
+                    "description":"Product to find",
                     "schema":{
                         "$ref":"#/components/schemas/Product"
                     }
+                }
+            }
+        },
+        "patch":{
+            "tags":["Products"],
+            "description":"Update Product in app",
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "required":true,
+                    "description":"Id of the product that we want to update",
+                    "type":"string"
+                }
+            ],
+            "requestBody": {
+                "description":"Product that we update",
+                "content":{
+                "application/json":{
+                    "schema":{
+                        "type":"object",
+                        "properties":{
+                            "product": {"type":"string"},
+                            "cost": {"type":"number"},
+                            "description": {"type":"string"},
+                            "quantity": {"type":"number"},
+                        },
+                        "required":["product", "cost"]
+                    }   
+                }
+            }   
+        },
+        "responses":{
+            "200": {
+                "description":"Update product",
+                "schema":{
+                    "$ref": "#/components/schemas/Product"
+            }
+        }
+     }
+},
+        "delete":{
+            "tags":["Products"],
+            "description":"Delete a product",
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "description":"Product to delete",
+                    "required":true,
+                    "type":"string"
+                }
+            ],
+            "responses":{
+                "200":{
+                    "description":"Delete a product"
                 }
             }
         }
