@@ -41,7 +41,7 @@ $(document).ready(function(){
 
     console.log($('.btnSubmit').val(), item);
     $.ajax({
-      url: "http://localhost:3000/api/users",
+      url: "http://localhost:3003/api/users",
       type: "post",
       data: item,
       dataType: "JSON",
@@ -53,11 +53,11 @@ $(document).ready(function(){
       let data = response.data;
       let status = response.status
   
-      if (status) { 
+      if (data.length>0) { 
           console.log(true,'Επιτυχής εισαγωγή του χρήστη');
           alert(true,'Επιτυχής εισαγωγή του χρήστη');
           $('#frmUser')[0].reset();
-          window.location.replace("http://localhost:3000/user/find.html")
+          window.location.replace("http://localhost:3003/user/find.html")
       } else {
           console.log(false,'Πρόβλημα στην εισαγωγή του χρήστη ('+ data.message + ')');
           alert(false,'Πρόβλημα στην εισαγωγή του χρήστη ('+ data.message + ')');
@@ -88,7 +88,7 @@ function createTbody(data){
       phone = phone + data[i].phone[x].type + ":" + data[i].phone[x].number + "<br>"
     }
     
-    // console.log(username, name);
+     //console.log(username, name);
 
     let tr_str = "<tr>" +
       "<td>" + username + "</td>" +
@@ -96,7 +96,7 @@ function createTbody(data){
       "<td>" + surname + "</td>" +
       "<td>" + email + "</td>" +
       "<td>" + address + "</td>" +
-      "<td>" + phone + "</td>" +      
+       "<td>" + phone + "</td>" +      
       "<td>" +
           "<button class='btnUpdate btn btn-primary' value=\'"+username+"\'>Τροποποίηση</button> " +
           "<button class='btnDelete btn btn-primary' value=\'"+username+"\'>Διαγραφή</button>" +

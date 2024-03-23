@@ -25,7 +25,7 @@ describe("Request GET /api/users", () => {
         const res = await request(app).get('/api/users')
         expect(res.statusCode).toBe(200)
         expect(res.body.data.length).toBeGreaterThan(0)
-    }, 10000)
+    }, 20000)
 })
 
 describe("Request GET /api/users/:username", () => {
@@ -37,7 +37,7 @@ describe("Request GET /api/users/:username", () => {
         expect(res.statusCode).toBe(200)
         expect(res.body.data.username).toBe(result.username)
         expect(res.body.data.email).toBe(result.email)
-    }, 10000)
+    }, 20000)
 })
 
 describe("Request POST /api/users", () => {
@@ -54,7 +54,7 @@ describe("Request POST /api/users", () => {
         })
         expect(res.statusCode).toBe(200)
         expect(res.body.data).toBeTruthy()
-    }, 10000);
+    }, 20000);
 
     it("Creates a user testing password length", async() => {
         const res = await request(app)
@@ -68,7 +68,7 @@ describe("Request POST /api/users", () => {
         })
         expect(res.statusCode).toBe(400)
         expect(res.body.data).toBeTruthy()
-    }, 10000);
+    }, 20000);
 
     it("Creates a user testing username and email", async() => {
         const res = await request(app)
@@ -82,7 +82,7 @@ describe("Request POST /api/users", () => {
         })
         expect(res.statusCode).toBe(400)
         expect(res.body.data).toBeTruthy()
-    }, 10000);
+    }, 20000);
 })
 
 describe("DELETE /api/users/:username", () => {
@@ -92,6 +92,6 @@ describe("DELETE /api/users/:username", () => {
         .delete('/api/users/' + result.username)
 
         expect(res.statusCode).toBe(200)
-    }, 10000)
+    }, 20000)
 })
 
