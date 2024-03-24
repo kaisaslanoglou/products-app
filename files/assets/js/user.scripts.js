@@ -49,13 +49,12 @@ $(document).ready(function(){
     })
     .done( function(response) {
       // console.log(">>", response);
-      
       let data = response.data;
       let status = response.status
   
       if (data.length>0) { 
-          console.log(true,'Επιτυχής εισαγωγή του χρήστη');
-          alert(true,'Επιτυχής εισαγωγή του χρήστη');
+          console.log(true, 'Επιτυχής εισαγωγή του χρήστη');
+          alert(true, 'Επιτυχής εισαγωγή του χρήστη');
           $('#frmUser')[0].reset();
           window.location.replace("http://localhost:3003/user/find.html")
       } else {
@@ -96,7 +95,7 @@ function createTbody(data){
       "<td>" + surname + "</td>" +
       "<td>" + email + "</td>" +
       "<td>" + address + "</td>" +
-       "<td>" + phone + "</td>" +      
+       "<td>" + phone + "</td>" +  
       "<td>" +
           "<button class='btnUpdate btn btn-primary' value=\'"+username+"\'>Τροποποίηση</button> " +
           "<button class='btnDelete btn btn-primary' value=\'"+username+"\'>Διαγραφή</button>" +
